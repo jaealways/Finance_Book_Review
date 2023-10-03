@@ -45,7 +45,7 @@
 - 실제 유동성은 딜러와 시장 조성자 모두에 의해 공급될 수 있는데, 이 때 누가 유동성을 공급했는지는 중요하지 않음
 - 딜러는 주문을 통해 유동성을 소비하는데, t 시점에 i 딜러가 제시한 bid price를 $b_t^i$, ask price를 $a_t^i$라 할 수 있음
 - best ask bid price를 다음과 같이 나타낼 수 있음
-$$a_t=\bf{min_i\{a_t^i\}}, b_t=\bf{min_i\{b_t^i\}}$$
+$$a_t=\bf{min_i(a_t^i)}, b_t=\bf{min_i(b_t^i)}$$
 - 즉 투자자는 가장 낮은 가격에 사서 가장 높은 가격으로 판매하고자 하기 때문에, 체결가격은 오직 방향에 따라 결정됨
 
 # 3.2 Price Dynamics and the Efficient Market Hypothesis
@@ -69,6 +69,7 @@ $$p_t=E(p_{t+1}|\Omega_t) \\  \Delta p_{t+1}=p_{t+1}-p_t=\mu_{t+1}-\mu_t=\epsilo
 - 위의 상황에선 호가 스프레드가 0이 되고, 주문에 의한 가격 변동이 없음
 - 위의 가정하에선 딜러가 주식을 팔았을 때 다음의 예상 수익을 얻음
 $$ E[(a_t^i-v)|\Omega_t]=a_t^i-\mu_t $$
+
 - 딜러의 수익은 ask의 가장 하단과의 차이지만, 마켓을 경쟁적이기 때문에 결국 ask price는 $\mu_t$로 수렴
 - bid price도 마찬가지인데, 떄문에 모든 주문이 $\mu_t$로 수렴하고, 주가는 주문 흐름의 영향을 받지 않음
 
@@ -86,6 +87,7 @@ $$ E[(a_t^i-v)|\Omega_t]=a_t^i-\mu_t $$
 - 딜러가 항상 모든 정보를 최선으로 알지 못하기 때문에, 거래로 인해 손해를 보는 것을 역선택이라 함 (적정가치 보다 높은 가격에 매수하거나 낮은 가격에 매도)
 - 딜러는 때문에 다른 거래자와의 거래를 통해 이득을 얻어야 하고, 이를 Glosten and Milgrom 모델을 통해 설명하고자 함
 $$ a_t=E(v|\Omega_{t-1}, d_t=+1) \\ b_t=E(v|\Omega_{t-1}, d_t=-1) $$
+
 - 위의 모델에서 ask price는 매수 주문을 예상하고, bid price는 매도 주문을 예상하기 때문에 ask price가 bid price 보다 큼
 - $a_t$는 지난 시점의 정보 $\Omega_{t-1}$과 지난 거래 $d_t$에 대한 기대값으로 나타남
 
