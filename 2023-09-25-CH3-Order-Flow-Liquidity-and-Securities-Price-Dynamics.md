@@ -332,7 +332,13 @@ $$U=E_t(v)(z_t-y_t)+c_t+p_ty_t-\rho sd_t(vz_{t+1})\\=\mu_t(z_t-y_t)+c_t+p_ty_t-\
 
 $$ \frac{\partial U}{\partial y_t}= \begin{cases} p_t-\mu_t-\rho\sigma_\epsilon, \textbf{if} y_t>z_t, \textbf{that is}, z_{t+1}<0 \\ p_t-\mu_t+\rho\sigma_\epsilon,  \textbf{if} y_t<z_t, \textbf{that is}, z_{t+1}>0 \end{cases}\ $$
 
+- 균형에서 딜러의 한계효용은 0이 되고, 가격의 범위는 아래와 같음
 
+$$ p_t \in [\mu_t-\rho\sigma_\epsilon,[\mu_t+\rho\sigma_\epsilon] $$
+
+- 딜러의 
+
+![Alt text](./image/2023-09-25-CH3-Order-Flow-Liquidity-and-Securities-Price-Dynamics/Figure3-6.png)
 
 ## 3.5.2 A Multi-Period Model
 
