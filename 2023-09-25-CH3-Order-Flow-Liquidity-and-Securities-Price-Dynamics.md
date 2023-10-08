@@ -283,17 +283,56 @@ $$ w_{t+1} = p_{t+1} · z_{t+1} + c_{t+1} $$
 
 ### (i) Mean-variance preferences
 
-- 재무이론에서 일반적으로 사용되는 공식은 선형평균분산함수
-- 딜러의 목표함수를 최대화하기 위해 주식 yt의 공급을 선택하는데, 아래의 식으로 정의할 수 있음
-- 그림 3.5처럼 가격이 기초가치 Et와 같아 시장이 재고보유비용에 대해 보상을 제공하지 않는다면, 딜러는 초기재고를 공급해서 기말재고를 0으로 줄임
-- 하지만, 시장이 위험 프리미엄을 제시해서 더 높은 가격을 제시하면, 딜러는 더 많은 주식을 공급하기 위해 공매도 포지션 취함. 이 때 위험회피정도에 따라 포지션의 크기 달라짐
+- 재무이론에서 일반적으로 사용되는 공식은 선형평균분산함수. 효용을 아래처럼 나타낼 수 있음. 이 때 $\rho$는 리스크 회피 척도.
+
+$$U=E_t(w_{t+1})-\frac{\rho}{2} \textbf{var}_t(w_{t+1})$$
+
+- 가장 끝 지점의 딜러의 부는 다음과 같이 나타낼 수 있음
+
+$$U=E_t(v)(z_t-y_t)+c_t+p_ty_t-\frac{\rho}{2}(z_t-y_t)^2\sigma_\epsilon^2 \\ = \mu_t(z_t-y_t)+c_t+p_ty_t-\frac{\rho}{2}(z_t-y_t)^2\sigma_\epsilon^2$$
+
+- 딜러의 목표함수를 최대화하기 위해, $y_t$를 다음과 같이 나눌 수 있음
+
+$$ \frac{\partial U}{\partial y_t}=-\mu_t+p_t+\rho(z_t-y_t)\sigma_\epsilon^2=0 \\ p_t=\mu_t+\rho\sigma_\epsilon^2$$
+
+- 그림 3.5처럼 가격이 펀더멘탈가치 $E_t(\mu_{t+1})$와 같아 시장이 재고보유비용에 대해 보상을 제공하지 않는다면, 딜러는 전 재고$(z_t)$를 공급해서 기말재고를 0으로 줄임
+
+![Alt text](./image/2023-09-25-CH3-Order-Flow-Liquidity-and-Securities-Price-Dynamics/Figure3-5.png)
+
+- 하지만, 시장이 위험 프리미엄을 제시해서 더 높은 가격을 제시하면, 딜러는 더 많은 주식을 공급하기 위해 위험을 감수하고 공매도 포지션 취함. 이 때 딜러의 위험회피정도에 따라 포지션의 크기 달라짐
 - 반대로 가격이 기본가치보다 낮으면 초기 재고보다 적게 공급
-- 딜러는 yt=dt를 정확히 공급해야 하는데, 이를 통해 식 3.44를 대체하면 균형가격이 산출
-- 따라서 midquote mt는 재고 위험 조정도 반영됨.
+- 딜러가 취하는 숏 포지션의 크기는 리스크 회피 정도$(\rho)$와 변동성$(\sigma_\epsilon^2)$에 의해 정해짐. 
+- 딜러가 위험을 더 회피하고, 주식이 더 위험할수록, 딜러가 공급하는 주식이 감소
+</br></br>
+
+- 균형에서 (대표) 딜러는 들어오는 주문인 $y_t=d_t$를 정확히 공급해야 하는데, 이를 통해 식 3.44를 대체하면 균형가격이 산출
+
+$$ p_t=\mu_t-\rho\sigma_\epsilon^2z_t+\rho\sigma_\epsilon^2d_t=m_t+\rho\sigma_\epsilon^2d_t $$
+
+- 따라서 midquote $m_t(\mu_t-\rho\sigma_\epsilon^2z_t)$는 펀더멘탈 가치 뿐만 아니라, 재고 위험 조정도 반영됨.
+- Figure 3.5처럼 균형가격은 딜러가 받는 주문이 매수냐 매도냐에 따라 달라짐. 이를 식으로 나타내면 아래와 같음
+
+$$ p_t= \begin{cases} a_t=m_t+\rho\sigma_\epsilon^2, \textbf{if}d_t=+1  \\ b_t=m_t-\rho\sigma_\epsilon^2,  \textbf{if}d_t=-1 \end{cases}\ $$
+
+- 딜러의 리스크 회피 정도와 주식의 펀더멘탈 변동성에 의해 결정되는 bid-ask 스프레드는 아래와 같이 정리할 수 있음
+
+$$S_t=2\rho\sigma_\epsilon^2$$
 
 ### (ii) Mean-standard deviation preferences
 
-- 다중 기간 분석에선 편의를 위해 덜 사용되는 공식을 채택.
+- 다중 기간 분석에선 편의를 위해 덜 사용되는 공식을 채택. 평균을 선형모형과, wealth의 표준편차를 사용.
+
+$$U=\textbf{E}_t(w_{t+1})-\rho sd_t(w_{t+1})$$
+
+- sd가 확률변수의 표준편차라면, 딜러의 마지막 시점 부(식 3.42)의 목적함수는 아래와 같음
+
+$$U=E_t(v)(z_t-y_t)+c_t+p_ty_t-\rho sd_t(vz_{t+1})\\=\mu_t(z_t-y_t)+c_t+p_ty_t-\rho|z_t-y_t|\sigma_\epsilon$$
+
+- $y_t$로 편미분하면 아래와 같음
+
+$$ \frac{\partial U}{\partial y_t}= \begin{cases} p_t-\mu_t-\rho\sigma_\epsilon, \textbf{if} y_t>z_t, \textbf{that is}, z_{t+1}<0 \\ p_t-\mu_t+\rho\sigma_\epsilon,  \textbf{if} y_t<z_t, \textbf{that is}, z_{t+1}>0 \end{cases}\ $$
+
+
 
 ## 3.5.2 A Multi-Period Model
 
